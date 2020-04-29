@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <timoffmax_homepage_form>
+            <general>
+                <!--
+                    In general, it should be disabled by default.
+                    I left it enabled to avoid problems with the test task.
+                -->
+                <enabled>1</enabled>
+            </general>
+        </timoffmax_homepage_form>
+    </default>
+</config>
