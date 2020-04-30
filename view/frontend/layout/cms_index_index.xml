@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main">
+            <referenceContainer name="content.top" remove="true"/>
+            <referenceContainer name="content" remove="true"/>
+            <referenceContainer name="content.aside" remove="true"/>
+            <referenceContainer name="content.bottom" remove="true"/>
+
+            <container name="content-custom">
+                <block name="homepage.form" template="Timoffmax_HomepageForm::ui_component/form.phtml">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="timoffmax-homepage-form" xsi:type="array">
+                                    <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/form</item>
+                                    <item name="template" xsi:type="string">Timoffmax_HomepageForm/homepage-form/form</item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="input-name" xsi:type="array">
+                                            <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/name</item>
+                                            <item name="additionalClasses" xsi:type="string">pull-left</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="placeholder" xsi:type="string">Name</item>
+                                                <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                            </item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.name</item>
+                                            <item name="sortOrder" xsi:type="number">10</item>
+                                            <item name="children" xsi:type="array"/>
+                                        </item>
+                                        <item name="input-phone" xsi:type="array">
+                                            <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/phone</item>
+                                            <item name="additionalClasses" xsi:type="string">pull-left</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="placeholder" xsi:type="string">Phone</item>
+                                                <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                            </item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.phone</item>
+                                            <item name="sortOrder" xsi:type="number">20</item>
+                                            <item name="children" xsi:type="array"/>
+                                        </item>
+                                        <item name="checkbox-random" xsi:type="array">
+                                            <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/random</item>
+                                            <item name="additionalClasses" xsi:type="string">pull-left</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="label" xsi:type="string">Random check</item>
+                                                <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/checkbox</item>
+                                            </item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                            <item name="checked" xsi:type="boolean">false</item>
+                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.random</item>
+                                            <item name="sortOrder" xsi:type="number">30</item>
+                                            <item name="children" xsi:type="array"/>
+                                        </item>
+                                        <item name="input-email" xsi:type="array">
+                                            <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/email</item>
+                                            <item name="additionalClasses" xsi:type="string">pull-right</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="placeholder" xsi:type="string">Email</item>
+                                                <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/email</item>
+                                            </item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.email</item>
+                                            <item name="sortOrder" xsi:type="number">40</item>
+                                            <item name="children" xsi:type="array"/>
+                                        </item>
+                                        <item name="input-address" xsi:type="array">
+                                            <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/address</item>
+                                            <item name="additionalClasses" xsi:type="string">pull-right</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="placeholder" xsi:type="string">Address</item>
+                                                <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                            </item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.address</item>
+                                            <item name="sortOrder" xsi:type="number">50</item>
+                                            <item name="children" xsi:type="array"/>
+                                        </item>
+                                        <item name="select-country" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                                            <item name="additionalClasses" xsi:type="string">pull-right</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                                                <item name="caption" xsi:type="string">Country</item>
+                                                <item name="options" xsi:type="array">
+                                                    <item name="option_1" xsi:type="array">
+                                                        <item name="label" xsi:type="string">Country_1</item>
+                                                        <item name="value" xsi:type="string">Country_1</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.country</item>
+                                            <item name="sortOrder" xsi:type="number">60</item>
+                                            <item name="children" xsi:type="array"/>
+                                        </item>
+                                        <item name="button-clear" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                                            <item name="buttonClasses" xsi:type="string">button-clear</item>
+                                            <item name="additionalClasses" xsi:type="string">pull-left</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="title" xsi:type="string">Clear</item>
+                                                <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
+                                                <item name="template" xsi:type="string">ui/form/components/button/simple</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/button</item>
+                                            </item>
+                                            <item name="sortOrder" xsi:type="number">70</item>
+                                            <item name="children" xsi:type="array"/>
+                                        </item>
+                                        <item name="button-submit" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                                            <item name="buttonClasses" xsi:type="string">button-submit</item>
+                                            <item name="additionalClasses" xsi:type="string">pull-right</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="title" xsi:type="string">Submit</item>
+                                                <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
+                                                <item name="template" xsi:type="string">ui/form/components/button/simple</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/button</item>
+                                            </item>
+                                            <item name="sortOrder" xsi:type="number">80</item>
+                                            <item name="children" xsi:type="array"/>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

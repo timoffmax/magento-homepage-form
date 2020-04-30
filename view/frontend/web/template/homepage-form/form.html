@@ -1,0 +1,14 @@
+<form id="homepage-form" class="form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+    <div class="form-title">
+        <h2 data-bind="i18n: getTitle()"></h2>
+    </div>
+    <div class="form-content">
+        <fieldset id="customer-data" class="fieldset">
+            <!-- ko foreach: { data: elems, as: 'element' } -->
+                <!-- ko if: hasTemplate() -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+        </fieldset>
+    </div>
+</form>

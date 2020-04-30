@@ -1,0 +1,14 @@
+<?php
+declare(strict_types=1);
+?>
+
+<div data-bind="scope:'timoffmax-homepage-form'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app":  <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+         }
+    }
+</script>
