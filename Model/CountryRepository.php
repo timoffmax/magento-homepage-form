@@ -15,6 +15,7 @@ use Timoffmax\HomepageForm\Api\CountryRepositoryInterface;
 use Timoffmax\HomepageForm\Api\Data\CountryInterface;
 use Timoffmax\HomepageForm\Api\Data\CountryInterfaceFactory;
 use Timoffmax\HomepageForm\Api\Data\CountrySearchResultInterface;
+use Timoffmax\HomepageForm\Api\Data\CountrySearchResultInterfaceFactory;
 use Timoffmax\HomepageForm\Model\ResourceModel\Country as CountryResource;
 use Timoffmax\HomepageForm\Model\ResourceModel\Country\Collection;
 use Timoffmax\HomepageForm\Model\ResourceModel\Country\CollectionFactory;

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Timoffmax\HomepageForm\Model;
 
+use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
 use Timoffmax\HomepageForm\Api\Data\CountryInterface;
 use Timoffmax\HomepageForm\Model\ResourceModel\Country as CountryResource;
@@ -10,7 +11,7 @@ use Timoffmax\HomepageForm\Model\ResourceModel\Country as CountryResource;
 /**
  * Country model
  */
-class Country extends AbstractModel implements CountryInterface
+class Country extends AbstractModel implements IdentityInterface, CountryInterface
 {
     /**
      * @var string
@@ -35,9 +36,25 @@ class Country extends AbstractModel implements CountryInterface
     /**
      * @inheritDoc
      */
+    protected function _construct()
+    {
+        $this->_init(CountryResource::class);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getIdentities()
+    {
+        return [self::CACHE_TAG . '_' . $this->getId()];
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getId(): ?int
     {
-        $value = $this->getData(CountryInterface::NAME);;
+        $value = $this->getData(CountryInterface::ID);;
         $result = (null !== $value) ? (int)$value : null;
 
         return $result;

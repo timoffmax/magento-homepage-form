@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Timoffmax\HomepageForm\Model;
 
+use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
 use Timoffmax\HomepageForm\Model\ResourceModel\FormData as FormDataResource;
 use Timoffmax\HomepageForm\Api\Data\FormDataInterface;
@@ -10,7 +11,7 @@ use Timoffmax\HomepageForm\Api\Data\FormDataInterface;
 /**
  * FormData model
  */
-class FormData extends AbstractModel implements FormDataInterface
+class FormData extends AbstractModel implements IdentityInterface, FormDataInterface
 {
     /**
      * @var string
@@ -31,6 +32,22 @@ class FormData extends AbstractModel implements FormDataInterface
      * @inheritDoc
      */
     protected $_eventPrefix = FormDataResource::ENTITY_TABLE;
+
+    /**
+     * @inheritDoc
+     */
+    protected function _construct()
+    {
+        $this->_init(FormDataResource::class);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getIdentities()
+    {
+        return [self::CACHE_TAG . '_' . $this->getId()];
+    }
 
     /**
      * @inheritDoc
