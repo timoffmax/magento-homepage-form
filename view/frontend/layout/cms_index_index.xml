@@ -57,17 +57,20 @@
                                             <item name="children" xsi:type="array"/>
                                         </item>
                                         <item name="checkbox-random" xsi:type="array">
-                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                            <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/checkbox-random</item>
                                             <item name="config" xsi:type="array">
                                                 <item name="description" xsi:type="string">Random check</item>
                                                 <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
                                                 <item name="template" xsi:type="string">ui/form/field</item>
                                                 <item name="elementTmpl" xsi:type="string">ui/form/element/checkbox</item>
+                                                <item name="valueMap" xsi:type="array">
+                                                    <item name="false" xsi:type="number">0</item>
+                                                    <item name="true" xsi:type="number">1</item>
+                                                </item>
                                             </item>
                                             <item name="validation" xsi:type="array">
                                                 <item name="required-entry" xsi:type="boolean">true</item>
                                             </item>
-                                            <item name="checked" xsi:type="boolean">false</item>
                                             <item name="provider" xsi:type="string">fakeProvider</item>
                                             <item name="dataScope" xsi:type="string">timoffmax-homepage-form.random</item>
                                             <item name="displayArea" xsi:type="string">column-left</item>
