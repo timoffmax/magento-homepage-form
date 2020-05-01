@@ -1,14 +1,82 @@
-<form id="homepage-form" class="form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+<form class="form homepage-form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
     <div class="form-title">
-        <h2 data-bind="i18n: getTitle()"></h2>
+        <h3 data-bind="i18n: getTitle()"></h3>
     </div>
     <div class="form-content">
-        <fieldset id="customer-data" class="fieldset">
+        <div class="row">
+            <div class="column column-left">
+                <!-- ko foreach: { data: elems, as: 'element' } -->
+                    <!-- ko if: hasTemplate() && (displayArea === 'column-left') -->
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!-- /ko -->
+                <!-- /ko -->
+            </div>
+            <div class="column column-right">
+                <!-- ko foreach: { data: elems, as: 'element' } -->
+                    <!-- ko if: hasTemplate() && (displayArea === 'column-right') -->
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!-- /ko -->
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="row buttons-panel">
             <!-- ko foreach: { data: elems, as: 'element' } -->
-                <!-- ko if: hasTemplate() -->
-                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- ko if: hasTemplate() && (displayArea === 'buttons-panel') -->
+                    <div class="column action">
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                    </div>
                 <!-- /ko -->
             <!-- /ko -->
-        </fieldset>
+        </div>
     </div>
 </form>
+
+<style>
+    .form-title {
+        text-align: center;
+        padding: 10px;
+        border-bottom: 3px solid gray;
+        background-color: dodgerblue;
+    }
+
+    .form-title > h3 {
+        margin-top: 0;
+    }
+
+    .homepage-form {
+        min-height: 300px;
+        min-width: 600px;
+        width: 50%;
+        margin: auto;
+        border: 5px solid gray;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .row.buttons-panel {
+        margin-bottom: 25px;
+    }
+
+    .column {
+        width: 40%;
+        padding: 15px;
+    }
+
+    .column.action {
+        text-align: center;
+    }
+
+    .column button.action {
+        line-height: 25px;
+        width: 150px;
+    }
+
+    .field .control {
+        margin: 15px;
+    }
+</style>
