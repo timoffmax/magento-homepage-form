@@ -1,0 +1,29 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- API -->
+    <preference for="Timoffmax\HomepageForm\Api\Data\FormDataInterface" type="Timoffmax\HomepageForm\Model\FormData"/>
+    <preference for="Timoffmax\HomepageForm\Api\Data\FormDataSearchResultInterface" type="Timoffmax\HomepageForm\Model\FormDataSearchResult"/>
+    <preference for="Timoffmax\HomepageForm\Api\FormDataRepositoryInterface" type="Timoffmax\HomepageForm\Model\FormDataRepository"/>
+    <preference for="Timoffmax\HomepageForm\Api\FormDataListInterface" type="Timoffmax\HomepageForm\Model\FormDataRepository"/>
+
+    <preference for="Timoffmax\HomepageForm\Api\Data\CountryInterface" type="Timoffmax\HomepageForm\Model\Country"/>
+    <preference for="Timoffmax\HomepageForm\Api\Data\CountrySearchResultInterface" type="Timoffmax\HomepageForm\Model\CountrySearchResult"/>
+    <preference for="Timoffmax\HomepageForm\Api\CountryRepositoryInterface" type="Timoffmax\HomepageForm\Model\CountryRepository"/>
+    <preference for="Timoffmax\HomepageForm\Api\CountryListInterface" type="Timoffmax\HomepageForm\Model\CountryRepository"/>
+
+    <!-- Data Providers -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tom_form_data_listing_data_source" xsi:type="string">
+                    Timoffmax\HomepageForm\Model\ResourceModel\FormData\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Timoffmax\HomepageForm\Model\ResourceModel\HomepageForm\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tom_form_data</argument>
+            <argument name="resourceModel" xsi:type="string">Timoffmax\HomepageForm\Model\ResourceModel\FormData</argument>
+        </arguments>
+    </virtualType>
+</config>

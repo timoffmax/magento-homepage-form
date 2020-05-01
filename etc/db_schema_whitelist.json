@@ -1,0 +1,27 @@
+{
+    "tom_country": {
+        "column": {
+            "id": true,
+            "name": true,
+            "code": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "TOM_COUNTRY_NAME_CODE": true
+        }
+    },
+    "tom_form_data": {
+        "column": {
+            "id": true,
+            "name": true,
+            "phone": true,
+            "is_active": true,
+            "email": true,
+            "address": true,
+            "country": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
