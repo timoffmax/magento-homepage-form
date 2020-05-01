@@ -36,12 +36,5 @@ define([
 
             return isValid;
         },
-
-        reset: function () {
-            console.log('reset');
-
-            this.source.trigger('data.reset');
-            $('[data-bind*=datepicker]').val('');
-        },
     });
 });
