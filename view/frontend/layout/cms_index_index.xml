@@ -10,6 +10,8 @@
             <container name="content-custom">
                 <block name="homepage.form" template="Timoffmax_HomepageForm::ui_component/form.phtml">
                     <arguments>
+                        <argument name="view_model" xsi:type="object">Timoffmax\HomepageForm\ViewModel\HomepageForm</argument>
+
                         <argument name="jsLayout" xsi:type="array">
                             <item name="components" xsi:type="array">
                                 <item name="timoffmax-homepage-form" xsi:type="array">
@@ -113,19 +115,16 @@
                                             <item name="children" xsi:type="array"/>
                                         </item>
                                         <item name="select-country" xsi:type="array">
-                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/country</item>
+                                            <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/select-country</item>
                                             <item name="additionalClasses" xsi:type="string">pull-right</item>
                                             <item name="config" xsi:type="array">
                                                 <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
                                                 <item name="template" xsi:type="string">ui/form/field</item>
                                                 <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
-                                                <item name="caption" xsi:type="string">Country</item>
-                                                <item name="options" xsi:type="array">
-                                                    <item name="option_1" xsi:type="array">
-                                                        <item name="label" xsi:type="string">Country_1</item>
-                                                        <item name="value" xsi:type="string">Country_1</item>
-                                                    </item>
-                                                </item>
+                                                <item name="caption" xsi:type="string">Select Country</item>
+                                                <!-- I don't know why it doesn't work-->
+                                                <item name="options" xsi:type="object">Timoffmax\HomepageForm\Ui\Component\Option\Countries</item>
+                                                <!-- I don't know why it doesn't work-->
                                             </item>
                                             <item name="validation" xsi:type="array">
                                                 <item name="required-entry" xsi:type="boolean">true</item>
