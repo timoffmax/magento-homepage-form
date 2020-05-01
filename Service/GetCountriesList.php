@@ -73,7 +73,7 @@ class GetCountriesList
     {
         $result = $this->getFromRepository();
 
-        if (empty($repositoryCountries)) {
+        if (empty($result)) {
             $result = $this->getFromApi();
         }
 
@@ -134,12 +134,7 @@ class GetCountriesList
             $this->countryRepository->save($country);
         } catch (\Throwable $t) {
             $message = "Can't create country with params: name = {$name}, code = {$code}. Details: {$t->getMessage()}";
-
             $this->logger->error($message);
-            echo "<pre>";
-            var_dump($message);
-            echo "</pre>";
-            exit;
         }
     }
 }
