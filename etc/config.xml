@@ -8,6 +8,7 @@
                     I left it enabled to avoid problems with the test task.
                 -->
                 <enabled>1</enabled>
+                <country_api_url><![CDATA[https://restcountries.eu/rest/v2/]]></country_api_url>
             </general>
         </timoffmax_homepage_form>
     </default>

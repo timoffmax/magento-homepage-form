@@ -40,7 +40,7 @@ abstract class AbstractConfig
      * @param int|null $storeId
      * @return bool
      */
-    abstract public function isEnabled(int $storeId = null): bool;
+    abstract public function isEnabled(?int $storeId = null): bool;
 
     /**
      * Get config value for current store
@@ -49,7 +49,7 @@ abstract class AbstractConfig
      * @param int|null $storeId
      * @return mixed
      */
-    protected function getStoreConfigValue(string $path, int $storeId = null)
+    protected function getStoreConfigValue(string $path, ?int $storeId = null)
     {
         return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE, $storeId);
     }
@@ -63,7 +63,7 @@ abstract class AbstractConfig
      *
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    protected function getStoreConfigFlag(string $path, int $storeId = null): bool
+    protected function getStoreConfigFlag(string $path, ?int $storeId = null): bool
     {
         return $this->scopeConfig->isSetFlag($path, ScopeInterface::SCOPE_STORE, $storeId);
     }
@@ -75,7 +75,7 @@ abstract class AbstractConfig
      * @param int|null $storeId
      * @return array
      */
-    protected function getMultiselectValue(string $path, int $storeId = null): array
+    protected function getMultiselectValue(string $path, ?int $storeId = null): array
     {
         $result = [];
         $value = $this->getStoreConfigValue($path, $storeId);
@@ -94,7 +94,7 @@ abstract class AbstractConfig
      * @param int|null $storeId
      * @return array
      */
-    protected function getSerializedValue(string $path, int $storeId = null): array
+    protected function getSerializedValue(string $path, ?int $storeId = null): array
     {
         $jsonValue = $this->getStoreConfigValue($path, $storeId);
 
