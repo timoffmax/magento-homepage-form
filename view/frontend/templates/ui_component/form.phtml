@@ -7,17 +7,18 @@ declare(strict_types=1);
  */
 $viewModel = $block->getViewModel();
 ?>
-
-<div id="homepage-form-wrapper" data-bind="scope:'timoffmax-homepage-form'">
-    <!-- ko template: getTemplate() --><!-- /ko -->
-</div>
-<script type="text/x-magento-init">
-    {
-        "*": {
-            "Timoffmax_HomepageForm/js/dictionary/countries": {
-                "list": <?= $viewModel->getCountriesJson() ?>
-            },
-            "Magento_Ui/js/core/app":  <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+<?php if ($viewModel->isEnabled()) : ?>
+    <div id="homepage-form-wrapper" data-bind="scope:'timoffmax-homepage-form'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Timoffmax_HomepageForm/js/dictionary/countries": {
+                    "list": <?= $viewModel->getCountriesJson() ?>
+                },
+                "Magento_Ui/js/core/app":  <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+            }
         }
-    }
-</script>
+    </script>
+<?php endif; ?>

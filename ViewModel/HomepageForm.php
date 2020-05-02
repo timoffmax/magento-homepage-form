@@ -55,6 +55,16 @@ class HomepageForm implements ArgumentInterface
     }
 
     /**
+     * @return bool
+     */
+    public function isEnabled(): bool
+    {
+        $result = $this->config->isEnabled();
+
+        return $result;
+    }
+
+    /**
      * @return string
      */
     public function getCountriesJson(): string
