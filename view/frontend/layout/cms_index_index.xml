@@ -8,6 +8,9 @@
             <referenceContainer name="content.bottom" remove="true"/>
 
             <container name="content-custom">
+                <!-- We can't get form_key from the cookie because it's not set when you remove "content" container -->
+                <block class="Magento\Framework\View\Element\FormKey" name="formkey"/>
+
                 <block name="homepage.form" template="Timoffmax_HomepageForm::ui_component/form.phtml">
                     <arguments>
                         <argument name="view_model" xsi:type="object">Timoffmax\HomepageForm\ViewModel\HomepageForm</argument>
@@ -18,6 +21,8 @@
                                     <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/form</item>
                                     <item name="template" xsi:type="string">Timoffmax_HomepageForm/homepage-form/form</item>
                                     <item name="provider" xsi:type="string">fakeProvider</item>
+                                    <item name="dataScope" xsi:type="string">timoffmax-homepage-form</item>
+                                    <item name="formUrl" xsi:type="helper" helper="Timoffmax\HomepageForm\ViewModel\HomepageForm::getFormUrl"/>
 
                                     <item name="children" xsi:type="array">
                                         <item name="input-name" xsi:type="array">
@@ -32,7 +37,7 @@
                                                 <item name="required-entry" xsi:type="boolean">true</item>
                                             </item>
                                             <item name="provider" xsi:type="string">fakeProvider</item>
-                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.input-name</item>
+                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.name</item>
                                             <item name="displayArea" xsi:type="string">column-left</item>
                                             <item name="sortOrder" xsi:type="number">10</item>
                                             <item name="children" xsi:type="array"/>
@@ -60,6 +65,7 @@
                                         </item>
                                         <item name="checkbox-random" xsi:type="array">
                                             <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/checkbox-random</item>
+                                            <item name="additionalClasses" xsi:type="string">checkbox required</item>
                                             <item name="config" xsi:type="array">
                                                 <item name="description" xsi:type="string">Random check</item>
                                                 <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
@@ -72,9 +78,12 @@
                                             </item>
                                             <item name="validation" xsi:type="array">
                                                 <item name="required-entry" xsi:type="boolean">true</item>
+                                                <item name="checked" xsi:type="boolean">true</item>
                                             </item>
+                                            <item name="value" xsi:type="boolean">false</item>
+                                            <item name="checked" xsi:type="boolean">false</item>
                                             <item name="provider" xsi:type="string">fakeProvider</item>
-                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.random</item>
+                                            <item name="dataScope" xsi:type="string">timoffmax-homepage-form.is_checked</item>
                                             <item name="displayArea" xsi:type="string">column-left</item>
                                             <item name="sortOrder" xsi:type="number">30</item>
                                             <item name="children" xsi:type="array"/>
@@ -116,7 +125,6 @@
                                         </item>
                                         <item name="select-country" xsi:type="array">
                                             <item name="component" xsi:type="string">Timoffmax_HomepageForm/js/homepage-form/fields/select-country</item>
-                                            <item name="additionalClasses" xsi:type="string">pull-right</item>
                                             <item name="config" xsi:type="array">
                                                 <item name="customScope" xsi:type="string">timoffmax-homepage-form</item>
                                                 <item name="template" xsi:type="string">ui/form/field</item>
@@ -166,7 +174,7 @@
                                                 <item name="actions" xsi:type="array">
                                                     <item name="0" xsi:type="array">
                                                         <item name="targetName" xsi:type="string">timoffmax-homepage-form</item>
-                                                        <item name="actionName" xsi:type="string">validate</item>
+                                                        <item name="actionName" xsi:type="string">submit</item>
                                                     </item>
                                                 </item>
                                             </item>

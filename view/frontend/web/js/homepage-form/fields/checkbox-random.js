@@ -9,7 +9,10 @@ define([
 
             let isChecked = (Math.random() >= 0.5);
             this.initialValue = isChecked;
-            this.value(isChecked);
+
+            if (true === isChecked) {
+                this.value(isChecked);
+            }
         },
     });
 });
