@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Timoffmax_HomepageForm::parent" title="Homepage Form" module="Timoffmax_HomepageForm"
+             sortOrder="10"
+             resource="Timoffmax_HomepageForm::manage"/>
+
+        <add id="Timoffmax_HomepageForm::plan" title="Requests" module="Timoffmax_HomepageForm"
+             sortOrder="10"
+             action="tom_hf/"
+             resource="Timoffmax_HomepageForm::manage"
+             parent="Timoffmax_HomepageForm::parent"
+        />
+    </menu>
+</config>

@@ -1,0 +1,103 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                tom_hf_request_listing.tom_hf_request_listing_data_source
+            </item>
+        </item>
+        <item name="spinner" xsi:type="string">request_columns</item>
+    </argument>
+    <settings>
+        <deps>
+            <dep>tom_hf_request_listing.tom_hf_request_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="tom_hf_request_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="tom_hf_request_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters">
+            <filterSelect name="country" provider="${ $.parentName }">
+                <settings>
+                    <options class="Timoffmax\HomepageForm\Ui\Component\Option\Countries"/>
+                    <caption translate="true">All Countries</caption>
+                    <label translate="true">Country</label>
+                    <dataScope>country</dataScope>
+                    <imports>
+                        <link name="visible">ns = ${ $.ns }, componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="request_columns">
+        <column name="id">
+            <settings>
+                <filter>textRange</filter>
+                <sorting>desc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+        <column name="phone">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Phone</label>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="address">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Address</label>
+            </settings>
+        </column>
+        <column name="is_checked" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <dataType>select</dataType>
+                <filter>select</filter>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <label translate="true">Is Checked</label>
+            </settings>
+        </column>
+        <column name="country" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <dataType>select</dataType>
+                <filter>select</filter>
+                <label translate="true">Country</label>
+                <options class="Timoffmax\HomepageForm\Ui\Component\Option\Countries"/>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Timoffmax\HomepageForm\Ui\Component\Listing\Columns\RequestActions">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

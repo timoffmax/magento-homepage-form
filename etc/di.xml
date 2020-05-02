@@ -14,8 +14,8 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="tom_form_data_listing_data_source" xsi:type="string">
-                    Timoffmax\HomepageForm\Model\ResourceModel\FormData\Collection
+                <item name="tom_hf_request_listing_data_source" xsi:type="string">
+                    Timoffmax\HomepageForm\Model\ResourceModel\HomepageForm\Grid\Collection
                 </item>
             </argument>
         </arguments>

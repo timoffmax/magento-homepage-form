@@ -6,6 +6,7 @@
                 <resource id="Timoffmax_Timoffmax::all" title="Timoffmax Modules" sortOrder="1000">
                     <resource id="Timoffmax_HomepageForm::index" title="Timoffmax Homepage Form">
                         <resource id="Timoffmax_HomepageForm::settings" title="Admin Settings"/>
+                        <resource id="Timoffmax_HomepageForm::manage" title="Manage Form Requests Data"/>
                     </resource>
                 </resource>
             </resource>
