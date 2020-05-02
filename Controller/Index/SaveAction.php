@@ -100,11 +100,12 @@ class SaveAction extends Action implements HttpPostActionInterface, CsrfAwareAct
         if (true === $this->validateRequest()) {
             $request = $this->getRequest();
             $formData = $request->getPost(static::FORM_NAME, []);
+            $isChecked = $this->stringToBool($formData[FormDataInterface::IS_CHECKED]);
 
             /** @var FormData $formDataItem */
             $formDataItem = $this->formDataFactory->create();
             $formDataItem->setData($formData);
-            $formDataItem->setIsChecked((bool)$formData[FormDataInterface::IS_CHECKED]);
+            $formDataItem->setIsChecked($isChecked);
 
             try {
                 $this->formDataRepository->save($formDataItem);
@@ -141,13 +142,24 @@ class SaveAction extends Action implements HttpPostActionInterface, CsrfAwareAct
         }
 
         foreach (static::FORM_FIELDS as $fieldName) {
-            $fieldIsSet = isset($formData[$fieldName]);
-            $result = $result && $fieldIsSet;
+            $fieldNotEmpty = !empty($formData[$fieldName]);
+            $result = $result && $fieldNotEmpty;
 
-            if (false === $fieldIsSet) {
+            if (false === $fieldNotEmpty) {
                 $this->validationErrors[] = __("Field '{$fieldName}' is not set.");
             }
         }
+
+        return $result;
+    }
+
+    /**
+     * @param string $value
+     * @return bool
+     */
+    private function stringToBool(string $value): bool
+    {
+        $result = $value === "true" ? true : false;
 
         return $result;
     }
