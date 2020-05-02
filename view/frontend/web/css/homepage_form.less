@@ -1,0 +1,51 @@
+
+
+form.homepage-form {
+    min-height: 300px;
+    min-width: 600px;
+    width: 50%;
+    margin: auto;
+    border: 5px solid gray;
+
+    .form-title {
+        text-align: center;
+        padding: 10px;
+        border-bottom: 3px solid gray;
+        background-color: dodgerblue;
+
+        h3 {
+            margin-top: 0;
+        }
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        &.buttons-panel {
+            margin-bottom: 25px;
+        }
+    }
+
+    .column {
+        width: 40%;
+        padding: 15px;
+
+        button.action {
+            line-height: 25px;
+            width: 150px;
+        }
+
+        &.action {
+            text-align: center;
+        }
+    }
+
+    .field {
+        .control {
+            margin: 15px;
+        }
+    }
+}
