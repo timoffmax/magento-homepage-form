@@ -26,4 +26,54 @@
             <argument name="resourceModel" xsi:type="string">Timoffmax\HomepageForm\Model\ResourceModel\FormData</argument>
         </arguments>
     </virtualType>
+
+    <!-- Custom loggers -->
+    <virtualType name="Timoffmax\HomepageForm\Logger\Handler\Error" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/country_api/error.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Timoffmax\HomepageForm\Logger\Handler\Request" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/country_api/request.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Timoffmax\HomepageForm\Logger\Handler\Response" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/country_api/response.log</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Timoffmax\HomepageForm\Logger\ErrorLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">tom_error_logger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Timoffmax\HomepageForm\Logger\Handler\Error</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Timoffmax\HomepageForm\Logger\RequestLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">tom_request_logger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Timoffmax\HomepageForm\Logger\Handler\Request</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Timoffmax\HomepageForm\Logger\ResponseLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">tom_request_logger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Timoffmax\HomepageForm\Logger\Handler\Response</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Timoffmax\HomepageForm\Service\ApiLogger">
+        <arguments>
+            <argument name="requestLogger" xsi:type="object">Timoffmax\HomepageForm\Logger\RequestLogger</argument>
+            <argument name="responseLogger" xsi:type="object">Timoffmax\HomepageForm\Logger\ResponseLogger</argument>
+            <argument name="errorLogger" xsi:type="object">Timoffmax\HomepageForm\Logger\ErrorLogger</argument>
+        </arguments>
+    </type>
 </config>

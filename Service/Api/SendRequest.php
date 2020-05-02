@@ -9,10 +9,10 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ResponseFactory;
 use Magento\Framework\Serialize\SerializerInterface;
-use Psr\Log\LoggerInterface;
 use Timoffmax\HomepageForm\Api\Request\RequestInterface;
 use Timoffmax\HomepageForm\Exception\CountryApiException;
 use Timoffmax\HomepageForm\Model\Config;
+use Timoffmax\HomepageForm\Service\ApiLogger;
 
 /**
  * Unified API request sender
@@ -40,7 +40,7 @@ class SendRequest
     private $serializer;
 
     /**
-     * @var LoggerInterface
+     * @var ApiLogger
      */
     private $logger;
 
@@ -49,14 +49,14 @@ class SendRequest
      * @param ClientFactory $clientFactory
      * @param ResponseFactory $responseFactory
      * @param SerializerInterface $serializer
-     * @param LoggerInterface $logger
+     * @param ApiLogger $logger
      * @param Config $config
      */
     public function __construct(
         ClientFactory $clientFactory,
         ResponseFactory $responseFactory,
         SerializerInterface $serializer,
-        LoggerInterface $logger,
+        ApiLogger $logger,
         Config $config
     ) {
         $this->clientFactory = $clientFactory;
@@ -87,6 +87,8 @@ class SendRequest
         $client = $this->getClient();
 
         try {
+            $this->logger->logRequest($requestObject);
+
             $response = $client->request(
                 $requestObject->getMethod(),
                 $requestObject->getEndpoint(),
@@ -98,7 +100,11 @@ class SendRequest
                 'status' => $exception->getCode(),
                 'reason' => $exception->getMessage()
             ]);
+
+            $this->logger->logError($requestObject, $response);
         }
+
+        $this->logger->logResponse($requestObject, $response);
 
         return $response;
     }
