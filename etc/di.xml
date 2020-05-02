@@ -76,4 +76,12 @@
             <argument name="errorLogger" xsi:type="object">Timoffmax\HomepageForm\Logger\ErrorLogger</argument>
         </arguments>
     </type>
+
+    <!-- Plugins -->
+    <type name="Magento\PageCache\Plugin\RegisterFormKeyFromCookie">
+        <plugin name="fix_empty_form_key"
+                type="Timoffmax\HomepageForm\Plugin\Magento\PageCache\Plugin\RegisterFormKeyFromCookie\AfterBeforeDispatch\FixEmptyFormKeyCookie"
+                sortOrder="10"
+        />
+    </type>
 </config>

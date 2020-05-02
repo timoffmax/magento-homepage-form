@@ -4,6 +4,7 @@ define([
     'Magento_Ui/js/form/form',
     'mageUtils',
     'Magento_Ui/js/modal/alert',
+    'jquery/jquery.cookie',
 ], function(_, $, form, utils, alert) {
     'use strict';
 
@@ -51,10 +52,12 @@ define([
          */
         makeRequest: function() {
             var save = $.Deferred();
+            let cookieFormKey = $.cookie('form_key');
+            let inputFormKey = $('input[name=form_key]').val();
 
             let data = this.source.get(this.dataScope);
             data = utils.serialize(data);
-            data['form_key'] = $('input[name=form_key]').val();
+            data['form_key'] = cookieFormKey ? cookieFormKey : inputFormKey;
 
             $('body').trigger('processStart');
 
