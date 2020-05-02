@@ -54,7 +54,7 @@ class FormData extends AbstractModel implements IdentityInterface, FormDataInter
      */
     public function getId(): ?int
     {
-        $value = $this->getData(FormDataInterface::NAME);;
+        $value = $this->getData($this->_idFieldName);
         $result = (null !== $value) ? (int)$value : null;
 
         return $result;

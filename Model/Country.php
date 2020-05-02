@@ -54,7 +54,7 @@ class Country extends AbstractModel implements IdentityInterface, CountryInterfa
      */
     public function getId(): ?int
     {
-        $value = $this->getData(CountryInterface::ID);;
+        $value = $this->getData($this->_idFieldName);
         $result = (null !== $value) ? (int)$value : null;
 
         return $result;
@@ -81,7 +81,7 @@ class Country extends AbstractModel implements IdentityInterface, CountryInterfa
      */
     public function getCode(): ?string
     {
-        return $this->getData(CountryInterface::NAME);
+        return $this->getData(CountryInterface::CODE);
     }
 
     /**

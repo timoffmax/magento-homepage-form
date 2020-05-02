@@ -15,7 +15,7 @@
             "id": true,
             "name": true,
             "phone": true,
-            "is_active": true,
+            "is_checked": true,
             "email": true,
             "address": true,
             "country": true
