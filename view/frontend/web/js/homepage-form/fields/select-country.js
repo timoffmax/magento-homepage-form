@@ -1,7 +1,7 @@
 define([
     'Magento_Ui/js/form/element/select',
     'uiRegistry',
-    'uiRegistry',
+    'Timoffmax_HomepageForm/js/dictionary/countries',
 ], function (Field, registry) {
     'use strict';
 
