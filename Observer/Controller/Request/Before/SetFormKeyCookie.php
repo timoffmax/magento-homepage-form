@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace Timoffmax\HomepageForm\Plugin\Magento\PageCache\Plugin\RegisterFormKeyFromCookie\AfterBeforeDispatch;
+namespace Timoffmax\HomepageForm\Observer\Controller\Request\Before;
 
 use Magento\Framework\App\PageCache\FormKey as CacheFormKey;
 use Magento\Framework\Data\Form\FormKey;
+use Magento\Framework\Event\Observer;
+use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Session\Config\ConfigInterface;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
-use Magento\PageCache\Plugin\RegisterFormKeyFromCookie;
 
 /**
- * Fixes a strange bug when form_key cookie is not set when you delete "content" container from layout
+ * Sets "form_key" cookie if it's empty
  */
-class FixEmptyFormKeyCookie
+class SetFormKeyCookie implements ObserverInterface
 {
     /**
      * @var FormKey
@@ -55,13 +56,10 @@ class FixEmptyFormKeyCookie
     }
 
     /**
-     * @param RegisterFormKeyFromCookie $subject
-     * @param $result
+     * @param Observer $observer
      * @throws LocalizedException
-     *
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterBeforeDispatch(RegisterFormKeyFromCookie $subject, $result)
+    public function execute(Observer $observer): void
     {
         if (empty($this->cookieFormKey->get())) {
             $this->setFormKeyCookie();

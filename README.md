@@ -11,6 +11,3 @@ Test task. Not for real use.
 - Copy module's content to `app/code/Timoffmax/HomepageForm`
 - `bin/magento module:enable Timoffmax_HomepageForm`
 - `bin/magento setup:upgrade`
-
-## To Improve
-- Investigate the bug with form key. The first request ofter fails because `form_key` cookie is not set on main page loading. 
