@@ -66,7 +66,8 @@ class ApiLogger
     }
 
     /**
-     * @param string $message
+     * @param RequestInterface $requestObject
+     * @param Response $response
      */
     public function logResponse(RequestInterface $requestObject, Response $response): void
     {
@@ -79,7 +80,8 @@ class ApiLogger
     }
 
     /**
-     * @param string $message
+     * @param RequestInterface $requestObject
+     * @param Response $response
      */
     public function logError(RequestInterface $requestObject, Response $response): void
     {
